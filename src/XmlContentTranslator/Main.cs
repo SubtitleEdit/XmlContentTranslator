@@ -111,6 +111,7 @@ namespace XmlContentTranslator
                     if (childNode.NodeType != XmlNodeType.Attribute)
                     {
                         var treeNode = new TreeNode(childNode.Name);
+                        treeNode.Tag = childNode;
                         treeView1.Nodes.Add(treeNode);
                         if (childNode.ChildNodes.Count > 0 && !IsTextNode(childNode))
                         {
@@ -391,6 +392,7 @@ namespace XmlContentTranslator
                 foreach (XmlNode childNode in node.ChildNodes)
                 {
                     var treeNode = new TreeNode(childNode.Name);
+                    treeNode.Tag = childNode;
                     if (parentNode == null)
                         treeView1.Nodes.Add(treeNode);
                     else
@@ -1174,6 +1176,37 @@ namespace XmlContentTranslator
             listViewLanguageTags.Items[index].Selected = true;
             listViewLanguageTags.Items[index].EnsureVisible();
             listViewLanguageTags.Items[index].Focused = true;
+        }
+
+        private void listViewLanguageTags_DoubleClick(object sender, EventArgs e)
+        {
+            if (listViewLanguageTags.SelectedItems.Count != 1)
+            {
+                return;
+            }
+
+            var node = listViewLanguageTags.SelectedItems[0].Tag as XmlNode;
+            if (node == null)
+            {
+                return;
+            }
+
+            foreach (TreeNode treeNode in treeView1.Nodes)
+            {
+                if (treeNode.Tag == node)
+                {
+                    treeView1.SelectedNode = treeNode;
+                    return;
+                }
+                foreach (TreeNode subTreeNode in treeNode.Nodes)
+                {
+                    if (subTreeNode.Tag == node)
+                    {
+                        treeView1.SelectedNode = subTreeNode;
+                        return;
+                    }
+                }
+            }
         }
 
     }
