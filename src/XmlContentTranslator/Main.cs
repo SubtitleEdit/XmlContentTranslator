@@ -120,7 +120,6 @@ namespace XmlContentTranslator
                         {
                             _treeNodesHashtable.Add(treeNode, childNode);
                             AddListViewItem(childNode);
-                            AddAttributes(childNode);
                         }
                     }
                 }
