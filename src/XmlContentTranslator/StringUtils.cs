@@ -10,7 +10,7 @@ namespace XmlContentTranslator
         public static string Max50(string text)
         {
             if (text.Length > 50)
-                return text.Substring(0, 49).Trim() + "...";
+                return text.Substring(0, 50).Trim() + "...";
             return text;
         }
     }
