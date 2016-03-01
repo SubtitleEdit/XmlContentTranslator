@@ -318,7 +318,7 @@ namespace XmlContentTranslator
                         treeView1.Nodes.Add(treeNode);
                     else
                         parentNode.Nodes.Add(treeNode);
-                    if (childNode.ChildNodes.Count > 0 && !XmlUtils.IsTextNode(childNode) && childNode.NodeType != XmlNodeType.Comment && childNode.NodeType != XmlNodeType.CDATA)
+                    if (XmlUtils.IsParentElement(childNode))
                     {
                         ExpandNode(treeNode, childNode);
                     }
@@ -335,7 +335,7 @@ namespace XmlContentTranslator
                 AddAttributes(node);
                 foreach (XmlNode childNode in node.ChildNodes)
                 {
-                    if (childNode.ChildNodes.Count > 0 && !XmlUtils.IsTextNode(childNode) && childNode.NodeType != XmlNodeType.Comment && childNode.NodeType != XmlNodeType.CDATA)
+                    if (XmlUtils.IsParentElement(childNode))
                     {
                         ExpandNode(null, childNode);
                     }

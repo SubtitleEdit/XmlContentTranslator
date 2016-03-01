@@ -93,5 +93,11 @@ namespace XmlContentTranslator
                 return string.Empty;
             return string.Format("[{0}]", i);
         }
+
+        public static bool IsParentElement(XmlNode xnode)
+        {
+            return xnode.ChildNodes.Count > 0 && !IsTextNode(xnode) &&
+                xnode.NodeType != XmlNodeType.Comment && xnode.NodeType != XmlNodeType.CDATA;
+        }
     }
 }
