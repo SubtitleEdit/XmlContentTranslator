@@ -351,15 +351,11 @@ namespace XmlContentTranslator
 
         private void AddAttributes(XmlNode node)
         {
-            if (node.NodeType == XmlNodeType.Comment || node.NodeType == XmlNodeType.CDATA)
+            if (node.Attributes == null || node.Attributes.Count == 0)
                 return;
-
-            if (node.Attributes != null)
+            foreach (XmlNode childNode in node.Attributes)
             {
-                foreach (XmlNode childNode in node.Attributes)
-                {
-                    AddListViewItem(childNode);
-                }
+                AddListViewItem(childNode);
             }
         }
 
