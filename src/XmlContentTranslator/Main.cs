@@ -87,20 +87,7 @@ namespace XmlContentTranslator
         private bool OpenFirstXmlDocument(XmlDocument doc)
         {
             listViewLanguageTags.Columns.Add("Tag", 150);
-            if (doc.DocumentElement != null && doc.DocumentElement.Attributes["Name"] != null)
-            {
-                listViewLanguageTags.Columns.Add(doc.DocumentElement.Attributes["Name"].InnerText, 200);
-            }
-            else if (doc.DocumentElement != null && doc.DocumentElement.Attributes["name"] != null)
-            {
-                listViewLanguageTags.Columns.Add(doc.DocumentElement.Attributes["name"].InnerText, 200);
-            }
-            else
-            {
-                listViewLanguageTags.Columns.Add("Language 1", 200);
-            }
-
-            SetLanguage(comboBoxFrom, doc);
+            TryGetLanguageNameAttribute(doc, comboBoxFrom);
 
             AddAttributes(doc.DocumentElement);
             if (doc.DocumentElement != null)
@@ -209,20 +196,7 @@ namespace XmlContentTranslator
                 MessageBox.Show("Not a valid xml file: " + _secondLanguageFileName);
             }
 
-            if (doc.DocumentElement != null && doc.DocumentElement.Attributes["Name"] != null)
-            {
-                listViewLanguageTags.Columns.Add(doc.DocumentElement.Attributes["Name"].InnerText, 200);
-            }
-            else if (doc.DocumentElement != null && doc.DocumentElement.Attributes["name"] != null)
-            {
-                listViewLanguageTags.Columns.Add(doc.DocumentElement.Attributes["name"].InnerText, 200);
-            }
-            else
-            {
-                listViewLanguageTags.Columns.Add("Language 2", 200);
-            }
-
-            SetLanguage(comboBoxTo, doc);
+            TryGetLanguageNameAttribute(doc, comboBoxTo);
 
             AddAttributes(doc.DocumentElement);
             if (doc.DocumentElement != null)
@@ -246,6 +220,28 @@ namespace XmlContentTranslator
             listViewLanguageTags.EndUpdate();
             Cursor = Cursors.Default;
             toolStripStatusLabel1.Text = "Done reading " + _secondLanguageFileName;
+        }
+
+        private void TryGetLanguageNameAttribute(XmlDocument doc, ComboBox cb)
+        {
+            if (doc.DocumentElement != null && doc.DocumentElement.Attributes["Name"] != null)
+            {
+                listViewLanguageTags.Columns.Add(doc.DocumentElement.Attributes["Name"].InnerText, 200);
+            }
+            else if (doc.DocumentElement != null && doc.DocumentElement.Attributes["name"] != null)
+            {
+                listViewLanguageTags.Columns.Add(doc.DocumentElement.Attributes["name"].InnerText, 200);
+            }
+            else
+            {
+                string language = "Language1";
+                if(cb.Name == "comboBoxTo")
+                {
+                    language = "Language2";
+                }
+                listViewLanguageTags.Columns.Add(language, 200);
+            }
+            SetLanguage(cb, doc);
         }
 
         private void CreateEmptyLanguage()
