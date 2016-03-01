@@ -8,6 +8,8 @@ namespace XmlContentTranslator
 {
     public static class XmlUtils
     {
+        private static readonly StringBuilder Sb = new StringBuilder();
+
         public static bool IsTextNode(XmlNode childNode)
         {
             if (childNode.ChildNodes.Count == 1 && childNode.ChildNodes[0].NodeType == XmlNodeType.Text)
@@ -17,21 +19,21 @@ namespace XmlContentTranslator
 
         public static string BuildNodePath(XmlNode node)
         {
-            var sb = new StringBuilder();
-            sb.Append(node.Name);
+            Sb.Clear();
+            Sb.Append(node.Name);
             if (node.NodeType == XmlNodeType.Attribute)
             {
                 XmlNode old = node;
                 node = (node as XmlAttribute).OwnerElement; // use OwnerElement for attributes as ParentNode is null
-                sb.Insert(0, node.Name + "@" + GetAttributeIndex(node, old));
+                Sb.Insert(0, node.Name + "@" + GetAttributeIndex(node, old));
                 //  node = node.ParentNode;
             }
             while (node.ParentNode != null)
             {
-                sb.Insert(0, node.ParentNode.Name + GetNodeIndex(node) + "/");
+                Sb.Insert(0, node.ParentNode.Name + GetNodeIndex(node) + "/");
                 node = node.ParentNode;
             }
-            return sb.ToString();
+            return Sb.ToString();
         }
 
         public static string GetAttributeIndex(XmlNode node, XmlNode child)
