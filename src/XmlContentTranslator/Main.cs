@@ -246,8 +246,7 @@ namespace XmlContentTranslator
             {
                 if (lvi.SubItems.Count == 2)
                 {
-                    var subItem = new ListViewItem.ListViewSubItem(lvi, string.Empty);
-                    lvi.SubItems.Add(subItem);
+                    lvi.SubItems.Add(string.Empty);
                 }
             }
         }
@@ -266,8 +265,7 @@ namespace XmlContentTranslator
                         item = new ListViewItem(node.Name);
                     item.Tag = node;
 
-                    var subItem = new ListViewItem.ListViewSubItem(item, node.InnerText);
-                    item.SubItems.Add(subItem);
+                    item.SubItems.Add(node.InnerText);
                     listViewLanguageTags.Items.Add(item);
                     _listViewItemHashtable.Add(XmlUtils.BuildNodePath(node), item); // fails on some attributes!!
                 }
@@ -277,8 +275,7 @@ namespace XmlContentTranslator
                 var item = _listViewItemHashtable[XmlUtils.BuildNodePath(node)] as ListViewItem;
                 if (item != null)
                 {
-                    var subItem = new ListViewItem.ListViewSubItem(item, node.InnerText);
-                    item.SubItems.Add(subItem);
+                    item.SubItems.Add(node.InnerText);
                 }
             }
         }
