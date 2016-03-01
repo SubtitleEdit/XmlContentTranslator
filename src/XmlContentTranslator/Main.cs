@@ -120,6 +120,8 @@ namespace XmlContentTranslator
         {
             int index = 0;
             comboBox.SelectedIndex = -1;
+            int defaultIndex = -1;
+            bool isDefaultSet = false;
             if (doc != null && doc.DocumentElement != null && doc.DocumentElement.SelectSingleNode("General/CultureName") != null)
             {
                 string culture = doc.DocumentElement.SelectSingleNode("General/CultureName").InnerText;
@@ -129,6 +131,11 @@ namespace XmlContentTranslator
                     {
                         comboBox.SelectedIndex = index;
                         return;
+                    }
+                    if (isDefaultSet == false && item.Value == "en")
+                    {
+                        defaultIndex = index;
+                        isDefaultSet = true;
                     }
                     index++;
                 }
@@ -145,19 +152,8 @@ namespace XmlContentTranslator
                     index++;
                 }
             }
-            if (comboBox.SelectedIndex == -1)
-            {
-                index = 0;
-                foreach (ComboBoxItem item in comboBox.Items)
-                {
-                    if (item.Value == "en")
-                    {
-                        comboBox.SelectedIndex = index;
-                        return;
-                    }
-                    index++;
-                }
-            }
+            if (defaultIndex >= 0)
+                comboBox.SelectedIndex = defaultIndex;
         }
 
         private void OpenSecondFile()
@@ -235,7 +231,7 @@ namespace XmlContentTranslator
             else
             {
                 string language = "Language1";
-                if(cb.Name == "comboBoxTo")
+                if (cb.Name == "comboBoxTo")
                 {
                     language = "Language2";
                 }
