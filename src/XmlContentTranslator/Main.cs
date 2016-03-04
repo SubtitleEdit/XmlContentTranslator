@@ -99,7 +99,7 @@ namespace XmlContentTranslator
                         var treeNode = new TreeNode(childNode.Name);
                         treeNode.Tag = childNode;
                         treeView1.Nodes.Add(treeNode);
-                        if (childNode.ChildNodes.Count > 0 && !XmlUtils.IsTextNode(childNode))
+                        if (XmlUtils.IsParentElement(childNode))
                         {
                             ExpandNode(treeNode, childNode);
                         }
