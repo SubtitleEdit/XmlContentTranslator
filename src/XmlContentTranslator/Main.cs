@@ -258,11 +258,9 @@ namespace XmlContentTranslator
                 if (node.NodeType != XmlNodeType.Comment && node.NodeType != XmlNodeType.CDATA)
                 {
 
-                    ListViewItem item;
+                    var item = new ListViewItem(node.Name);
                     if (node.NodeType == XmlNodeType.Attribute)
-                        item = new ListViewItem("@" + node.Name);
-                    else
-                        item = new ListViewItem(node.Name);
+                        item.Name = "@" + item.Name;
                     item.Tag = node;
 
                     item.SubItems.Add(node.InnerText);
