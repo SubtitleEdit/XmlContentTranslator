@@ -374,15 +374,12 @@ namespace XmlContentTranslator
 
         private void DeSelectListViewItems()
         {
-            var selectedItems = new List<ListViewItem>();
+            listViewLanguageTags.SelectedIndexChanged -= ListViewLanguageTagsSelectedIndexChanged;
             foreach (ListViewItem lvi in listViewLanguageTags.SelectedItems)
-            {
-                selectedItems.Add(lvi);
-            }
-            foreach (ListViewItem lvi in selectedItems)
             {
                 lvi.Selected = false;
             }
+            listViewLanguageTags.SelectedIndexChanged += ListViewLanguageTagsSelectedIndexChanged;
         }
 
         private void ListViewLanguageTagsSelectedIndexChanged(object sender, EventArgs e)
