@@ -841,7 +841,7 @@ namespace XmlContentTranslator
             saveFileDialog1.Title = "Save language file as...";
             saveFileDialog1.DefaultExt = ".xml";
             saveFileDialog1.Filter = "Xml files|*.xml" + "|All files|*.*";
-            saveFileDialog1.Title = "Open language master file";
+            saveFileDialog1.Title = "Save as language master file";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 _secondLanguageFileName = saveFileDialog1.FileName;
