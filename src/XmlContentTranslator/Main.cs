@@ -101,7 +101,7 @@ namespace XmlContentTranslator
                         var treeNode = new TreeNode(childNode.Name);
                         treeNode.Tag = childNode;
                         treeView1.Nodes.Add(treeNode);
-                        if (childNode.ChildNodes.Count > 0 && !XmlUtils.IsTextNode(childNode))
+                        if (childNode.ChildNodes.Count > 0 && !childNode.IsTextNode())
                         {
                             ExpandNode(treeNode, childNode);
                         }
@@ -201,7 +201,7 @@ namespace XmlContentTranslator
             {
                 foreach (XmlNode childNode in doc.DocumentElement.ChildNodes)
                 {
-                    if (childNode.ChildNodes.Count > 0 && !XmlUtils.IsTextNode(childNode))
+                    if (childNode.ChildNodes.Count > 0 && !childNode.IsTextNode())
                     {
                         ExpandNode(null, childNode);
                     }
@@ -309,7 +309,7 @@ namespace XmlContentTranslator
                         treeView1.Nodes.Add(treeNode);
                     else
                         parentNode.Nodes.Add(treeNode);
-                    if (XmlUtils.IsParentElement(childNode))
+                    if (childNode.IsParentElement())
                     {
                         ExpandNode(treeNode, childNode);
                     }
@@ -326,7 +326,7 @@ namespace XmlContentTranslator
                 AddAttributes(node);
                 foreach (XmlNode childNode in node.ChildNodes)
                 {
-                    if (XmlUtils.IsParentElement(childNode))
+                    if (childNode.IsParentElement())
                     {
                         ExpandNode(null, childNode);
                     }
@@ -425,7 +425,7 @@ namespace XmlContentTranslator
             {
                 foreach (XmlNode childNode in _originalDocument.DocumentElement.ChildNodes)
                 {
-                    if (childNode.ChildNodes.Count > 0 && !XmlUtils.IsTextNode(childNode))
+                    if (childNode.ChildNodes.Count > 0 && !childNode.IsTextNode())
                     {
                         FillOriginalDocumentExpandNode(childNode);
                     }
@@ -439,6 +439,7 @@ namespace XmlContentTranslator
                         FillAttributes(_originalDocument.DocumentElement);
                     }
                 }
+                XmlUtils.ConvertToSelfClosingTags(_originalDocument.DocumentElement);
             }
         }
 
@@ -447,7 +448,7 @@ namespace XmlContentTranslator
             FillAttributes(node);
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.ChildNodes.Count > 0 && !XmlUtils.IsTextNode(childNode))
+                if (childNode.ChildNodes.Count > 0 && !childNode.IsTextNode())
                 {
                     FillOriginalDocumentExpandNode(childNode);
                 }
@@ -465,7 +466,7 @@ namespace XmlContentTranslator
 
         private void FillAttributes(XmlNode node)
         {
-            if (node.Attributes == null)
+            if (node == null || node.Attributes == null)
                 return;
 
             foreach (XmlNode attribute in node.Attributes)
