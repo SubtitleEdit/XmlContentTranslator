@@ -90,19 +90,19 @@
             this.translateViaGoogleToolStripMenuItem,
             this.setValueFromMasterToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(217, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(216, 48);
             // 
             // translateViaGoogleToolStripMenuItem
             // 
             this.translateViaGoogleToolStripMenuItem.Name = "translateViaGoogleToolStripMenuItem";
-            this.translateViaGoogleToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.translateViaGoogleToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
             this.translateViaGoogleToolStripMenuItem.Text = "Translate via google";
             this.translateViaGoogleToolStripMenuItem.Click += new System.EventHandler(this.translateViaGoogleToolStripMenuItem_Click);
             // 
             // setValueFromMasterToolStripMenuItem
             // 
             this.setValueFromMasterToolStripMenuItem.Name = "setValueFromMasterToolStripMenuItem";
-            this.setValueFromMasterToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.setValueFromMasterToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
             this.setValueFromMasterToolStripMenuItem.Text = "Transfer value from master";
             this.setValueFromMasterToolStripMenuItem.Click += new System.EventHandler(this.setValueFromMasterToolStripMenuItem_Click);
             // 
@@ -203,7 +203,7 @@
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.googleTranslateSelectedLinesToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
             // 
             // googleTranslateSelectedLinesToolStripMenuItem
@@ -332,7 +332,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(820, 350);
             this.Name = "Main";
-            this.Text = "XML Content Translator 1.6";
+            this.Text = "XML Content Translator 1.7";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1FormClosing);
             this.Load += new System.EventHandler(this.Form1Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1KeyDown);

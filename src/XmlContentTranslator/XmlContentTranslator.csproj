@@ -61,6 +61,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Translator\Configuration.cs" />
+    <Compile Include="Translator\Formatting.cs" />
+    <Compile Include="Translator\GoogleTranslator1.cs" />
+    <Compile Include="Translator\HtmlUtil.cs" />
+    <Compile Include="Translator\ITranslator.cs" />
+    <Compile Include="Translator\Json.cs" />
+    <Compile Include="Translator\StringExtensions.cs" />
+    <Compile Include="Translator\TranslationHelper.cs" />
+    <Compile Include="Translator\TranslationPair.cs" />
+    <Compile Include="Translator\Utilities.cs" />
     <Compile Include="XmlUtils.cs" />
     <Compile Include="StringUtils.cs" />
     <EmbeddedResource Include="Find.resx">
