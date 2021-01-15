@@ -554,11 +554,11 @@ namespace XmlContentTranslator
             input = input.Replace("'", "&apos;");
 
             //string url = String.Format("https://www.google.com/translate_t?hl=en&ie=UTF8&text={0}&langpair={1}", HttpUtility.UrlEncode(input), languagePair);
-            string url = String.Format("https://translate.google.com/?hl=en&eotf=1&sl={0}&tl={1}&q={2}", languagePair.Substring(0, 2), languagePair.Substring(3), HttpUtility.UrlEncode(input));
+            var url = $"https://translate.google.com/?hl=en&eotf=1&sl={languagePair.Substring(0, 2)}&tl={languagePair.Substring(3)}&q={HttpUtility.UrlEncode(input)}";
 
             var webClient = new WebClient { Encoding = Encoding.Default };
-            string result = webClient.DownloadString(url);
-            int startIndex = result.IndexOf("<span id=result_box", StringComparison.Ordinal);
+            var result = webClient.DownloadString(url);
+            var startIndex = result.IndexOf("<span id=result_box", StringComparison.Ordinal);
             var sb = new StringBuilder();
             if (startIndex > 0)
             {
@@ -577,7 +577,7 @@ namespace XmlContentTranslator
                     }
                 }
             }
-            string res = sb.ToString();
+            var res = sb.ToString();
             res = res.Replace("<BR/>", Environment.NewLine);
             res = res.Replace("<BR />", Environment.NewLine);
             res = res.Replace("< BR />", Environment.NewLine);
@@ -615,6 +615,7 @@ namespace XmlContentTranslator
             foreach (ListViewItem item in listViewLanguageTags.SelectedItems)
             {
                 oldText = item.SubItems[1].Text;
+                oldText = string.Join(Environment.NewLine, oldText.SplitToLines());
                 oldLines.Add(oldText);
                 var urlEncode = HttpUtility.UrlEncode(sb + newText);
                 if (urlEncode.Length >= 1000)
@@ -1016,5 +1017,9 @@ namespace XmlContentTranslator
             }
         }
 
+        private void Main_Resize(object sender, EventArgs e)
+        {
+            listViewLanguageTags.Columns[listViewLanguageTags.Columns.Count - 1].Width = -2;
+        }
     }
 }

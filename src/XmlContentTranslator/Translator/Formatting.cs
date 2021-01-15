@@ -49,7 +49,7 @@ namespace XmlContentTranslator.Translator
                     char.IsLetterOrDigit(lines[0][lines[0].Length - 1]) &&
                     char.IsLower(lines[1][0]))
                 {
-                    text = text.Replace(Environment.NewLine, " ").Replace("  ", " ");
+                    text = string.Join(" ", text.SplitToLines()).Replace("  ", " ");
                     AutoBreak = true;
                 }
             }
