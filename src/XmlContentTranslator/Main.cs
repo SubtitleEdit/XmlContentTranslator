@@ -1019,7 +1019,21 @@ namespace XmlContentTranslator
 
         private void Main_Resize(object sender, EventArgs e)
         {
-            listViewLanguageTags.Columns[listViewLanguageTags.Columns.Count - 1].Width = -2;
+            Main_ResizeEnd(null, null);
+        }
+
+        private void Main_ResizeEnd(object sender, EventArgs e)
+        {
+            if (listViewLanguageTags.Columns.Count > 0)
+            {
+                var w = 0;
+                for (int i = 0; i < listViewLanguageTags.Columns.Count - 1; i++)
+                {
+                    w += listViewLanguageTags.Columns[i].Width;
+                }
+
+                listViewLanguageTags.Columns[listViewLanguageTags.Columns.Count - 1].Width = listViewLanguageTags.Width - 25 - w;
+            }
         }
     }
 }

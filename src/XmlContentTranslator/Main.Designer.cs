@@ -335,6 +335,7 @@
             this.Text = "XML Content Translator 1.9";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1FormClosing);
             this.Load += new System.EventHandler(this.Form1Load);
+            this.ResizeEnd += new System.EventHandler(this.Main_ResizeEnd);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1KeyDown);
             this.Resize += new System.EventHandler(this.Main_Resize);
             this.contextMenuStrip1.ResumeLayout(false);
