@@ -10,11 +10,14 @@ namespace XmlContentTranslator
     {
         private static readonly StringBuilder Sb = new StringBuilder();
 
-        public static bool IsTextNode(XmlNode childNode)
+        public static bool IsTextNode(this XmlNode node)
         {
-            if (childNode.ChildNodes.Count == 1 && childNode.ChildNodes[0].NodeType == XmlNodeType.Text)
-                return true;
-            return false;
+            return node != null && node.ChildNodes.Count == 1 && node.ChildNodes[0].NodeType == XmlNodeType.Text;
+        }
+
+        public static bool IsParentElement(this XmlNode node)
+        {
+            return node != null && node.ChildNodes.Count > 0 && !node.IsTextNode() && node.NodeType != XmlNodeType.Comment && node.NodeType != XmlNodeType.CDATA;
         }
 
         public static string BuildNodePath(XmlNode node)
@@ -94,10 +97,28 @@ namespace XmlContentTranslator
             return string.Format("[{0}]", i);
         }
 
-        public static bool IsParentElement(XmlNode xnode)
+        public static void ConvertToSelfClosingTags(XmlElement element)
         {
-            return xnode.ChildNodes.Count > 0 && !IsTextNode(xnode) &&
-                xnode.NodeType != XmlNodeType.Comment && xnode.NodeType != XmlNodeType.CDATA;
+            if (element != null && !element.IsEmpty)
+            {
+                bool noChildElements = true;
+                if (element.HasChildNodes)
+                {
+                    for (XmlNode node = element.FirstChild; node != null; node = node.NextSibling)
+                    {
+                        if (node.NodeType == XmlNodeType.Element)
+                        {
+                            ConvertToSelfClosingTags(node as XmlElement);
+                            noChildElements = false;
+                        }
+                    }
+                }
+                if (noChildElements && element.InnerText.Length == 0 && element.ParentNode?.ParentNode?.ParentNode != null)
+                {
+                    element.IsEmpty = true;
+                }
+            }
         }
+
     }
 }
