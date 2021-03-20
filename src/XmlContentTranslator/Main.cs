@@ -101,7 +101,7 @@ namespace XmlContentTranslator
                         var treeNode = new TreeNode(childNode.Name);
                         treeNode.Tag = childNode;
                         treeView1.Nodes.Add(treeNode);
-                        if (childNode.ChildNodes.Count > 0 && !XmlUtils.IsTextNode(childNode))
+                        if (XmlUtils.IsParentElement(childNode))
                         {
                             ExpandNode(treeNode, childNode);
                         }
@@ -260,11 +260,9 @@ namespace XmlContentTranslator
                 if (node.NodeType != XmlNodeType.Comment && node.NodeType != XmlNodeType.CDATA)
                 {
 
-                    ListViewItem item;
+                    var item = new ListViewItem(node.Name);
                     if (node.NodeType == XmlNodeType.Attribute)
-                        item = new ListViewItem("@" + node.Name);
-                    else
-                        item = new ListViewItem(node.Name);
+                        item.Name = "@" + item.Name;
                     item.Tag = node;
 
                     item.SubItems.Add(node.InnerText);
@@ -376,15 +374,12 @@ namespace XmlContentTranslator
 
         private void DeSelectListViewItems()
         {
-            var selectedItems = new List<ListViewItem>();
+            listViewLanguageTags.SelectedIndexChanged -= ListViewLanguageTagsSelectedIndexChanged;
             foreach (ListViewItem lvi in listViewLanguageTags.SelectedItems)
-            {
-                selectedItems.Add(lvi);
-            }
-            foreach (ListViewItem lvi in selectedItems)
             {
                 lvi.Selected = false;
             }
+            listViewLanguageTags.SelectedIndexChanged += ListViewLanguageTagsSelectedIndexChanged;
         }
 
         private void ListViewLanguageTagsSelectedIndexChanged(object sender, EventArgs e)
@@ -752,7 +747,7 @@ namespace XmlContentTranslator
             saveFileDialog1.Title = "Save language file as...";
             saveFileDialog1.DefaultExt = ".xml";
             saveFileDialog1.Filter = "Xml files|*.xml" + "|All files|*.*";
-            saveFileDialog1.Title = "Open language master file";
+            saveFileDialog1.Title = "Save as language master file";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 _secondLanguageFileName = saveFileDialog1.FileName;
