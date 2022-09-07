@@ -910,12 +910,12 @@ namespace XmlContentTranslator
             openFileDialog1.FileName = string.Empty;
             openFileDialog1.DefaultExt = ".xml";
             openFileDialog1.Filter = "Xml files|*.xml" + "|All files|*.*";
-            openFileDialog1.Title = "Open language master file";
+            openFileDialog1.Title = "Open English translation base file";
 
             var doc = new XmlDocument();
             try
             {
-                const string url = "https://raw.githubusercontent.com/SubtitleEdit/subtitleedit/master/LanguageMaster.xml";
+                const string url = "https://raw.githubusercontent.com/SubtitleEdit/subtitleedit/main/LanguageBaseEnglish.xml";
                 var wc = new WebClient();
                 var xml = wc.DownloadString(url);
                 MakeNew();

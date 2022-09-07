@@ -136,7 +136,7 @@
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(305, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(341, 22);
             this.toolStripMenuItem1.Text = "&New";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.ToolStripMenuItem1Click);
             // 
@@ -144,41 +144,41 @@
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(305, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(341, 22);
             this.openToolStripMenuItem.Text = "&Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItemClick);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(305, 22);
-            this.toolStripMenuItem2.Text = "Open Subtitle Edit language master online...";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(341, 22);
+            this.toolStripMenuItem2.Text = "Open Subtitle Edit English translation base online...";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(305, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(341, 22);
             this.saveToolStripMenuItem.Text = "&Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItemClick);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(305, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(341, 22);
             this.saveAsToolStripMenuItem.Text = "Save &as...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItemClick);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(302, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(338, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(305, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(341, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
             // 
@@ -332,7 +332,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(820, 350);
             this.Name = "Main";
-            this.Text = "XML Content Translator 1.9";
+            this.Text = "XML Content Translator 1.10";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1FormClosing);
             this.Load += new System.EventHandler(this.Form1Load);
             this.ResizeEnd += new System.EventHandler(this.Main_ResizeEnd);
