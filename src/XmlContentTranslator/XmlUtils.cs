@@ -10,11 +10,27 @@ namespace XmlContentTranslator
     {
         private static readonly StringBuilder Sb = new StringBuilder();
 
-        public static bool IsTextNode(XmlNode childNode)
+        public static bool ContainsText(XmlNode node)
         {
-            if (childNode.ChildNodes.Count == 1 && childNode.ChildNodes[0].NodeType == XmlNodeType.Text)
-                return true;
+            foreach (XmlNode childNode in node.ChildNodes)
+            {
+                if (childNode.NodeType == XmlNodeType.Text)
+                {
+                    return true;
+                }
+            }
+
             return false;
+        }
+
+        public static bool IsTextNode(XmlNode node)
+        {
+            if (node.ChildNodes.Count == 1 && node.ChildNodes[0].NodeType == XmlNodeType.Text)
+            {
+                return true;
+            }
+
+            return ContainsText(node);
         }
 
         public static string BuildNodePath(XmlNode node)
@@ -79,7 +95,7 @@ namespace XmlContentTranslator
                 }
 
             }
-            else
+            else if (node.NodeType != XmlNodeType.Text)
             {
                 foreach (var x in node.ParentNode.SelectNodes(node.Name))
                 {

@@ -75,7 +75,7 @@
             this.listViewLanguageTags.HideSelection = false;
             this.listViewLanguageTags.Location = new System.Drawing.Point(255, 60);
             this.listViewLanguageTags.Name = "listViewLanguageTags";
-            this.listViewLanguageTags.Size = new System.Drawing.Size(575, 275);
+            this.listViewLanguageTags.Size = new System.Drawing.Size(652, 421);
             this.listViewLanguageTags.TabIndex = 10;
             this.listViewLanguageTags.UseCompatibleStateImageBehavior = false;
             this.listViewLanguageTags.View = System.Windows.Forms.View.Details;
@@ -114,7 +114,7 @@
             this.toolsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(842, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(919, 24);
             this.menuStrip1.TabIndex = 11;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -217,11 +217,11 @@
             // 
             this.textBoxCurrentText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxCurrentText.Location = new System.Drawing.Point(255, 341);
+            this.textBoxCurrentText.Location = new System.Drawing.Point(255, 487);
             this.textBoxCurrentText.Multiline = true;
             this.textBoxCurrentText.Name = "textBoxCurrentText";
             this.textBoxCurrentText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxCurrentText.Size = new System.Drawing.Size(575, 80);
+            this.textBoxCurrentText.Size = new System.Drawing.Size(652, 80);
             this.textBoxCurrentText.TabIndex = 12;
             this.textBoxCurrentText.TextChanged += new System.EventHandler(this.TextBoxCurrentTextTextChanged);
             this.textBoxCurrentText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxCurrentTextKeyDown);
@@ -233,7 +233,7 @@
             this.treeView1.HideSelection = false;
             this.treeView1.Location = new System.Drawing.Point(13, 60);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(236, 361);
+            this.treeView1.Size = new System.Drawing.Size(236, 507);
             this.treeView1.TabIndex = 13;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView1AfterSelect);
             // 
@@ -246,9 +246,9 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 424);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 570);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(842, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(919, 22);
             this.statusStrip1.TabIndex = 14;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -261,7 +261,7 @@
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(709, 17);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(786, 17);
             this.toolStripStatusLabel2.Spring = true;
             this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -316,7 +316,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(842, 446);
+            this.ClientSize = new System.Drawing.Size(919, 592);
             this.Controls.Add(this.buttonGoToNextBlankLine);
             this.Controls.Add(this.labelTo);
             this.Controls.Add(this.comboBoxTo);
@@ -332,7 +332,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(820, 350);
             this.Name = "Main";
-            this.Text = "XML Content Translator 1.10";
+            this.Text = "XML Content Translator 1.11";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1FormClosing);
             this.Load += new System.EventHandler(this.Form1Load);
             this.ResizeEnd += new System.EventHandler(this.Main_ResizeEnd);
