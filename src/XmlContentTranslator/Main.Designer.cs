@@ -79,6 +79,7 @@
             this.listViewLanguageTags.TabIndex = 10;
             this.listViewLanguageTags.UseCompatibleStateImageBehavior = false;
             this.listViewLanguageTags.View = System.Windows.Forms.View.Details;
+            this.listViewLanguageTags.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewLanguageTags_ColumnClick);
             this.listViewLanguageTags.SelectedIndexChanged += new System.EventHandler(this.ListViewLanguageTagsSelectedIndexChanged);
             this.listViewLanguageTags.DragDrop += new System.Windows.Forms.DragEventHandler(this.ListViewLanguageTagsDragDrop);
             this.listViewLanguageTags.DragEnter += new System.Windows.Forms.DragEventHandler(this.ListViewLanguageTagsDragEnter);

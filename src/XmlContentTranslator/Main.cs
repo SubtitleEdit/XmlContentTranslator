@@ -15,7 +15,7 @@ namespace XmlContentTranslator
 {
     public partial class Main : Form
     {
-        class ComboBoxItem
+        public class ComboBoxItem
         {
             private string Text { get; }
             public string Value { get; }
@@ -37,11 +37,11 @@ namespace XmlContentTranslator
             }
         }
 
-        Hashtable _treeNodesHashtable = new Hashtable();
-        Hashtable _listViewItemHashtable = new Hashtable();
-        XmlDocument _originalDocument;
-        string _secondLanguageFileName;
-        bool _change;
+        private Hashtable _treeNodesHashtable = new Hashtable();
+        private Hashtable _listViewItemHashtable = new Hashtable();
+        private XmlDocument _originalDocument;
+        private string _secondLanguageFileName;
+        private bool _change;
         private Find _formFind;
 
         public Main()
@@ -52,6 +52,54 @@ namespace XmlContentTranslator
 
             FillComboWithLanguages(comboBoxFrom);
             FillComboWithLanguages(comboBoxTo);
+        }
+
+        private void listViewLanguageTags_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            var sorter = GetListViewSorter(e.Column);
+            listViewLanguageTags.ListViewItemSorter = sorter;
+            listViewLanguageTags.Sort();
+        }
+
+        private ListViewItemComparer GetListViewSorter(int columnIndex)
+        {
+            var sorter = (ListViewItemComparer)listViewLanguageTags.ListViewItemSorter;
+            if (sorter == null)
+            {
+                sorter = new ListViewItemComparer();
+            }
+
+            sorter.ColumnIndex = columnIndex;
+
+            var columnName = listViewLanguageTags.Columns[columnIndex].Name;
+            switch (columnName)
+            {
+                default:
+                    sorter.ColumnType = TypeCode.String;
+                    break;
+            }
+
+            for (var i = 0; i < listViewLanguageTags.Columns.Count; i++)
+            {
+                listViewLanguageTags.Columns[i].Text = listViewLanguageTags.Columns[i].Text.TrimEnd(' ', '↑', '↓');
+            }
+
+            if (sorter.SortDirection == SortOrder.Ascending)
+            {
+                sorter.SortDirection = SortOrder.Descending;
+                listViewLanguageTags.Columns[columnIndex].Text += " ↑";
+            }
+            else if (sorter.SortDirection == SortOrder.Descending)
+            {
+                sorter.SortDirection = SortOrder.None;
+            }
+            else
+            {
+                sorter.SortDirection = SortOrder.Ascending;
+                listViewLanguageTags.Columns[columnIndex].Text += " ↓";
+            }
+
+            return sorter;
         }
 
         private void OpenToolStripMenuItemClick(object sender, EventArgs e)
@@ -276,7 +324,6 @@ namespace XmlContentTranslator
                     else if (XmlUtils.ContainsText(node))
                     {
                         item = new ListViewItem(node.Name);
-//                        item = new ListViewItem("#" + node.Name);
                         item.SubItems.Add(node.InnerXml);
                     }
                     else
@@ -288,6 +335,8 @@ namespace XmlContentTranslator
 
                     item.Tag = node;
                     listViewLanguageTags.Items.Add(item);
+                    ListViewItemComparer.NoSortOrder.Add(item, listViewLanguageTags.Items.Count);
+
                     _listViewItemHashtable.Add(XmlUtils.BuildNodePath(node), item); // fails on some attributes!!
                 }
             }
@@ -498,7 +547,7 @@ namespace XmlContentTranslator
                             {
                                 childNode.InnerXml = item.SubItems[2].Text;
                             }
-                            catch 
+                            catch
                             {
                                 childNode.InnerText = item.SubItems[2].Text;
                             }
@@ -1109,7 +1158,7 @@ namespace XmlContentTranslator
             if (listViewLanguageTags.Columns.Count > 0)
             {
                 var w = 0;
-                for (int i = 0; i < listViewLanguageTags.Columns.Count - 1; i++)
+                for (var i = 0; i < listViewLanguageTags.Columns.Count - 1; i++)
                 {
                     w += listViewLanguageTags.Columns[i].Width;
                 }
