@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
@@ -817,6 +818,40 @@ namespace XmlContentTranslator
             {
                 oldText = item.SubItems[2].Text;
                 newText = item.SubItems[1].Text;
+                transferred++;
+                item.SubItems[2].Text = newText;
+                _change = true;
+            }
+
+            if (transferred == 1)
+            {
+                toolStripStatusLabel1.Text = "One line transfered from master: '" + oldText + "' => '" + newText + "'";
+            }
+            else
+            {
+                toolStripStatusLabel1.Text = transferred + " line(s) transfered from master";
+            }
+
+            ListViewLanguageTagsSelectedIndexChanged(null, null);
+        }
+
+
+        private void setValueFromTextToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_secondLanguageFileName))
+            {
+                return;
+            }
+
+            var transferred = 0;
+            var oldText = string.Empty;
+            var newText = string.Empty;
+            foreach (ListViewItem item in listViewLanguageTags.SelectedItems)
+            {
+                oldText = item.SubItems[2].Text;
+                newText = Interaction.InputBox("Data", "Please enter the data.", oldText, -1, -1);
+                if (string.IsNullOrEmpty(newText))
+                    newText = oldText;
                 transferred++;
                 item.SubItems[2].Text = newText;
                 _change = true;

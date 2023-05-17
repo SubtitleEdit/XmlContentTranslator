@@ -34,6 +34,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.translateViaGoogleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setValueFromMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setValueFromTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,8 +68,8 @@
             // listViewLanguageTags
             // 
             this.listViewLanguageTags.AllowDrop = true;
-            this.listViewLanguageTags.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.listViewLanguageTags.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewLanguageTags.ContextMenuStrip = this.contextMenuStrip1;
             this.listViewLanguageTags.FullRowSelect = true;
@@ -89,9 +90,10 @@
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.translateViaGoogleToolStripMenuItem,
-            this.setValueFromMasterToolStripMenuItem});
+            this.setValueFromMasterToolStripMenuItem,
+            this.setValueFromTextToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(215, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(215, 70);
             // 
             // translateViaGoogleToolStripMenuItem
             // 
@@ -106,6 +108,13 @@
             this.setValueFromMasterToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
             this.setValueFromMasterToolStripMenuItem.Text = "Transfer value from master";
             this.setValueFromMasterToolStripMenuItem.Click += new System.EventHandler(this.setValueFromMasterToolStripMenuItem_Click);
+            // 
+            // setValueFromTextToolStripMenuItem
+            // 
+            this.setValueFromTextToolStripMenuItem.Name = "setValueFromTextToolStripMenuItem";
+            this.setValueFromTextToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.setValueFromTextToolStripMenuItem.Text = "Edit Text";
+            this.setValueFromTextToolStripMenuItem.Click += new System.EventHandler(this.setValueFromTextToolStripMenuItem_Click);
             // 
             // menuStrip1
             // 
@@ -216,7 +225,7 @@
             // 
             // textBoxCurrentText
             // 
-            this.textBoxCurrentText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.textBoxCurrentText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxCurrentText.Location = new System.Drawing.Point(255, 487);
             this.textBoxCurrentText.Multiline = true;
@@ -229,7 +238,7 @@
             // 
             // treeView1
             // 
-            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.treeView1.HideSelection = false;
             this.treeView1.Location = new System.Drawing.Point(13, 60);
@@ -371,6 +380,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem setValueFromMasterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setValueFromTextToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem translateViaGoogleToolStripMenuItem;
         private System.Windows.Forms.Label labelTo;
         private System.Windows.Forms.ComboBox comboBoxTo;
