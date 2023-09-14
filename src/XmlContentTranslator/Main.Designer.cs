@@ -333,7 +333,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(820, 350);
             this.Name = "Main";
-            this.Text = "XML Content Translator 1.11";
+            this.Text = "XML Content Translator 1.12";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1FormClosing);
             this.Load += new System.EventHandler(this.Form1Load);
             this.ResizeEnd += new System.EventHandler(this.Main_ResizeEnd);
