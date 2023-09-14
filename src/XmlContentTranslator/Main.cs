@@ -312,45 +312,40 @@ namespace XmlContentTranslator
         {
             if (listViewLanguageTags.Columns.Count == 2)
             {
-                if (node.NodeType != XmlNodeType.Comment && node.NodeType != XmlNodeType.CDATA)
+                if (node.NodeType == XmlNodeType.Comment || node.NodeType == XmlNodeType.CDATA)
                 {
-
-                    ListViewItem item;
-                    if (node.NodeType == XmlNodeType.Attribute)
-                    {
-                        item = new ListViewItem("@" + node.Name);
-                        item.SubItems.Add(node.InnerText);
-                    }
-                    else if (XmlUtils.ContainsText(node))
-                    {
-                        item = new ListViewItem(node.Name);
-                        item.SubItems.Add(node.InnerXml);
-                    }
-                    else
-                    {
-                        item = new ListViewItem(node.Name);
-                        item.SubItems.Add(node.InnerText);
-                    }
-
-
-                    item.Tag = node;
-                    listViewLanguageTags.Items.Add(item);
-                    ListViewItemComparer.NoSortOrder.Add(item, listViewLanguageTags.Items.Count);
-
-                    _listViewItemHashtable.Add(XmlUtils.BuildNodePath(node), item); // fails on some attributes!!
+                    return;
                 }
-            }
-            else if (listViewLanguageTags.Columns.Count == 3)
-            {
-                var item = _listViewItemHashtable[XmlUtils.BuildNodePath(node)] as ListViewItem;
 
-                if (XmlUtils.ContainsText(node))
+                ListViewItem item;
+                if (node.NodeType == XmlNodeType.Attribute)
                 {
-                    item?.SubItems.Add(node.InnerXml);
+                    item = new ListViewItem("@" + node.Name);
+                    item.SubItems.Add(node.InnerText);
+                }
+                else if (XmlUtils.ContainsText(node))
+                {
+                    item = new ListViewItem(node.Name);
+                    item.SubItems.Add(node.InnerXml);
                 }
                 else
                 {
-                    item?.SubItems.Add(node.InnerText);
+                    item = new ListViewItem(node.Name);
+                    item.SubItems.Add(node.InnerText);
+                }
+
+
+                item.Tag = node;
+                listViewLanguageTags.Items.Add(item);
+                ListViewItemComparer.NoSortOrder.Add(item, listViewLanguageTags.Items.Count);
+
+                _listViewItemHashtable.Add(XmlUtils.BuildNodePath(node), item); // fails on some attributes!!
+            }
+            else if (listViewLanguageTags.Columns.Count == 3)
+            {
+                if (_listViewItemHashtable[XmlUtils.BuildNodePath(node)] is ListViewItem item && item.SubItems.Count < 4096)
+                {
+                    item.SubItems.Add(XmlUtils.ContainsText(node) ? node.InnerXml : node.InnerText);
                 }
             }
         }
